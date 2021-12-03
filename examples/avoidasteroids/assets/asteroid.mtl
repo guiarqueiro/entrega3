@@ -12,5 +12,5 @@ newmtl _10464_Asteroid_v1_max201010464_Asteroid_v1
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka asteroid.jpg
-	map_Kd asteroid.jpg
+	map_Ka 10464_Asteroid_v1_diffuse.jpg
+	map_Kd 10464_Asteroid_v1_diffuse.jpg

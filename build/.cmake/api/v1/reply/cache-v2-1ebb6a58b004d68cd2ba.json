@@ -151,10 +151,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "C:/msys64/mingw64/bin/x86_64-w64-mingw32-g++.exe"
 		},
 		{
@@ -295,10 +295,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe"
 		},
 		{
@@ -1555,7 +1555,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;C:/msys64/mingw64/lib/libSDL2.dll.a"
+			"value" : "mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;mingw32;-mwindows;C:/msys64/mingw64/lib/libSDL2main.a;C:/msys64/mingw64/lib/libSDL2.dll.a"
 		},
 		{
 			"name" : "SDL_PATH",
@@ -1844,6 +1844,42 @@
 			],
 			"type" : "STATIC",
 			"value" : "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui"
+		},
+		{
+			"name" : "starfield_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/examples/avoidasteroids"
+		},
+		{
+			"name" : "starfield_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "OFF"
+		},
+		{
+			"name" : "starfield_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids"
 		}
 	],
 	"kind" : "cache",
