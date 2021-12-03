@@ -1,0 +1,97 @@
+[
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_application.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_application.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_application.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_elapsedtimer.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_elapsedtimer.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_elapsedtimer.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_exception.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_exception.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_exception.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_image.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_image.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_image.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_openglfunctions.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_openglfunctions.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_openglfunctions.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_openglwindow.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_openglwindow.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_openglwindow.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_string.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_string.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_string.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\CMakeFiles\\abcg.dir\\abcg_trackball.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_trackball.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\abcg_trackball.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_demo.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_demo.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_demo.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_draw.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_draw.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_draw.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_tables.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_tables.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_tables.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_widgets.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_widgets.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_widgets.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_impl_sdl.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_impl_sdl.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_impl_sdl.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -g -flto -fno-fat-lto-objects -o abcg\\external\\imgui\\CMakeFiles\\imgui.dir\\imgui_impl_opengl3.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_impl_opengl3.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\imgui\\imgui_impl_opengl3.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -g -flto -fno-fat-lto-objects -std=gnu++20 -o abcg\\external\\fmt\\CMakeFiles\\fmt.dir\\format.cc.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\fmt\\format.cc",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\abcg\\external\\fmt\\format.cc"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20 -o examples\\avoidasteroids\\CMakeFiles\\avoidasteroids.dir\\main.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\main.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\main.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20 -o examples\\avoidasteroids\\CMakeFiles\\avoidasteroids.dir\\model.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\model.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\model.cpp"
+},
+{
+  "directory": "C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20 -o examples\\avoidasteroids\\CMakeFiles\\avoidasteroids.dir\\openglwindow.cpp.obj -c C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\openglwindow.cpp",
+  "file": "C:\\Users\\Guilherme\\Documents\\CG_UFABC\\entrega3\\examples\\avoidasteroids\\openglwindow.cpp"
+}
+]

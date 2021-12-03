@@ -1,0 +1,4 @@
+C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/CMakeFiles/_CMakeLTOTest-C/bin/CMakeFiles/rebuild_cache.dir
+C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/CMakeFiles/_CMakeLTOTest-C/bin/CMakeFiles/edit_cache.dir
+C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/CMakeFiles/_CMakeLTOTest-C/bin/CMakeFiles/boo.dir
+C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/CMakeFiles/_CMakeLTOTest-C/bin/CMakeFiles/foo.dir
