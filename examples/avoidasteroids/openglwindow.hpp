@@ -53,7 +53,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   void update();
 
   void restart();
-  glm::vec3 m_shipPosition = glm::vec3(0.0f, -6.0f, -5.0f);
+  glm::vec3 m_shipPosition = glm::vec3(0.0f, 0.0f, 0.0f);
   glm::vec3 m_shipRotation = glm::normalize(glm::vec3(1.0f, 1.0f, 1.0f));  glm::mat4 m_modelMatrix{1.0f};
   std::vector<const char*> m_shaderNames{"texture", "blinnphong", "phong",
                                          "gouraud", "normal", "depth"};

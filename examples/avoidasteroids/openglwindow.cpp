@@ -39,10 +39,10 @@ void OpenGLWindow::initializeGL() {
     randomizeAsteroid(position, rotation);
   }
 
-  loadModel("ship.obj", "ancient_greece_vase.jpg", m_ship);
+  loadModel("ship.obj", "ship.jpg", m_ship);
 
   cont_collisions = 5;
-  m_shipPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+  m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
 }
 
 void OpenGLWindow::loadModel(std::string path_obj, std::string path_text, Model &model) {
@@ -82,16 +82,16 @@ void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
 
   if (handleEvent.type == SDL_KEYDOWN) {
     if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
-      m_shipPosition.y += deltaTime * 30.0f;
+      m_shipPosition.y += deltaTime * 10.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      m_shipPosition.y -= deltaTime * 30.0f;
+      m_shipPosition.y -= deltaTime * 10.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
-      m_shipPosition.x -= deltaTime * 30.0f;
+      m_shipPosition.x -= deltaTime * 10.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
-      m_shipPosition.x += deltaTime * 30.0f;
+      m_shipPosition.x += deltaTime * 10.0f;
     }
   }
 
@@ -355,7 +355,7 @@ void OpenGLWindow::update() {
 
           if(cont_collisions == 0){
             lost = true;
-            m_shipPosition.z = 20.0f;
+            m_shipPosition.z = 20.0f; //???
             m_restartWaitTimer.restart();
           }
 
