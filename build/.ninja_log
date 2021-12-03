@@ -47,3 +47,5 @@
 25	87	6602585521790001	examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.obj	6a8461d326533c81
 6	3359	6602585554286474	examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/model.cpp.obj	269410b10fe60682
 3359	12580	0	bin/avoidasteroids.exe	e0d2d0fcc830ca
+5	2421	6602586735593791	examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/main.cpp.obj	9daed72b3472072
+2421	11301	0	bin/avoidasteroids.exe	e0d2d0fcc830ca
