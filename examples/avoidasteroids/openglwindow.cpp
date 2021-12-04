@@ -174,7 +174,6 @@ void OpenGLWindow::paintGL() {
   glm::mat4 modelShipMatrix{1.0f};
   modelShipMatrix = glm::translate(modelShipMatrix, m_shipPosition);
   modelShipMatrix = glm::scale(modelShipMatrix, glm::vec3(0.07f));
-  //modelShipMatrix = glm::rotate(modelShipMatrix, 0.0f, m_shipRotation);
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelShipMatrix[0][0]);
   const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelShipMatrix)};
   glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
@@ -302,7 +301,7 @@ void OpenGLWindow::paintUI() {
         }
         ImGui::EndCombo();
       }
-      ImGui::Text("Colisões restantes: %d", cont_collisions);
+      ImGui::Text("VIDAS: %d", cont_collisions);
       ImGui::PopItemWidth();
     }
 

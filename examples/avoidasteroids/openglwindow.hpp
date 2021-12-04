@@ -19,7 +19,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   static const int m_numAsteroids{150};
   static const int m_numPlanets{12};
 
-  GLuint m_program{};
+  std::vector<GLuint> m_programs;
 
   int m_viewportWidth{};
   int m_viewportHeight{};
@@ -54,22 +54,10 @@ class OpenGLWindow : public abcg::OpenGLWindow {
 
   void restart();
   glm::vec3 m_shipPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-  glm::vec3 m_shipRotation = glm::normalize(glm::vec3(1.0f, 1.0f, 1.0f));  glm::mat4 m_modelMatrix{1.0f};
   std::vector<const char*> m_shaderNames{"texture", "blinnphong", "phong",
                                          "gouraud", "normal", "depth"};
-  std::vector<GLuint> m_programs;
   int m_currentProgramIndex{};
   int m_mappingMode{};
-
-  //teste
-  glm::vec4 m_lightDir{-1.0f, -1.0f, -1.0f, 0.0f};
-  glm::vec4 m_Ia{1.0f};
-  glm::vec4 m_Id{1.0f};
-  glm::vec4 m_Is{1.0f};
-  glm::vec4 m_Ka;
-  glm::vec4 m_Kd;
-  glm::vec4 m_Ks;
-  float m_shininess{};
 
   void loadModel(std::string path_obj, std::string path_text, Model &model);
 };
