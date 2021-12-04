@@ -96,16 +96,16 @@ void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
   const float deltaTime{static_cast<float>(getDeltaTime())};
   if (handleEvent.type == SDL_KEYDOWN) {
     if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
-      m_shipPosition.y += deltaTime * 10.0f;
+      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 1.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
-      m_shipPosition.x -= deltaTime * 10.0f;
+      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 1.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      m_shipPosition.y -= deltaTime * 10.0f;
+      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 1.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
-      m_shipPosition.x += deltaTime * 10.0f;
+      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 1.0f;
     }
   }
 }

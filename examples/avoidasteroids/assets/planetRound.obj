@@ -1,6 +1,6 @@
 # Object Export From Tinkercad Server 2015
 
-mtllib obj.mtl
+mtllib planetRound.mtl
 
 o obj_0
 v 5.828 		-7.702 		6.251
