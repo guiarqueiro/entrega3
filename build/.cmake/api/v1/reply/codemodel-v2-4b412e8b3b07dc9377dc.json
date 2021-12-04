@@ -246,14 +246,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "abcg::@fa5a221ce82f0a06330e",
-					"jsonFile" : "target-abcg-Debug-3e5ab2879996a1b6ebac.json",
+					"jsonFile" : "target-abcg-Debug-debce65f70addcb7e24f.json",
 					"name" : "abcg",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 9,
 					"id" : "avoidasteroids::@ff6f98aee040bd26b644",
-					"jsonFile" : "target-avoidasteroids-Debug-0ecd64451103e19fdc6d.json",
+					"jsonFile" : "target-avoidasteroids-Debug-5494b3924e5932d50a69.json",
 					"name" : "avoidasteroids",
 					"projectIndex" : 6
 				},

@@ -9,34 +9,29 @@
 void OpenGLWindow::initializeGL() {
   abcg::glClearColor(0, 0, 0, 1);
   abcg::glEnable(GL_DEPTH_TEST);
-
-  // Create program
-  /*m_program = createProgramFromFile(getAssetsPath() + "depth.vert",
-                                    getAssetsPath() + "depth.frag");*/
-
   // Create programs
   for (const auto& name : m_shaderNames) {
     const auto path{getAssetsPath() + "shaders/" + name};
     const auto program{createProgramFromFile(path + ".vert", path + ".frag")};
     m_programs.push_back(program);
   }
-
-  // Load model
-  loadModel("asteroid.obj", "asteroid.jpg", m_asteroid);
   m_mappingMode = 3;  // "From mesh" option
-
-  // Camera at (0,0,0) and looking towards the negative z
-  m_viewMatrix =
-      glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), 
-                  glm::vec3(0.0f, 0.0f, -1.0f),
-                  glm::vec3(0.0f, 1.0f, 0.0f));
-
-  // Setup stars
+  m_viewMatrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+  //asteroides
+  loadModel("asteroid.obj", "asteroid.jpg", m_asteroid);
   for (const auto index : iter::range(m_numAsteroids)) {
     auto &position{m_asteroidPositions.at(index)};
     auto &rotation{m_asteroidRotations.at(index)};
-
     randomizeAsteroid(position, rotation);
+  }
+
+  //planetas
+  loadModel("planetRound.obj", "planetRound.jpg", m_planetRound);
+  loadModel("planetRing.obj", "planetRing.jpg", m_planetRing);
+  for (const auto index : iter::range(m_numPlanets)) {
+    auto &position{m_planetPositions.at(index)};
+    auto &rotation{m_planetRotations.at(index)};
+    randomizePlanet(position, rotation);
   }
 
   loadModel("ship.obj", "ship.jpg", m_ship);
@@ -47,11 +42,9 @@ void OpenGLWindow::initializeGL() {
 
 void OpenGLWindow::loadModel(std::string path_obj, std::string path_text, Model &model) {
   model.terminateGL();
-
   model.loadDiffuseTexture(getAssetsPath() + "maps/" + path_text);
   model.loadObj(getAssetsPath() + path_obj);
   model.setupVAO(m_programs.at(m_currentProgramIndex));
-
   // Use material properties from the loaded model
   model.m_Ka = model.getKa();
   model.m_Kd = model.getKd();
@@ -60,57 +53,69 @@ void OpenGLWindow::loadModel(std::string path_obj, std::string path_text, Model 
 }
 
 void OpenGLWindow::randomizeAsteroid(glm::vec3 &position, glm::vec3 &rotation) {
-  // Get random position
-  // x and y coordinates in the range [-20, 20]
-  // z coordinates in the range [-100, 0]
   std::uniform_real_distribution<float> distPosXY(-20.0f, 20.0f);
   std::uniform_real_distribution<float> distPosZ(-100.0f, 0.0f);
-
   position = glm::vec3(distPosXY(m_randomEngine), distPosXY(m_randomEngine),
                        distPosZ(m_randomEngine));
-
-  //  Get random rotation axis
   std::uniform_real_distribution<float> distRotAxis(-1.0f, 1.0f);
-
   rotation = glm::normalize(glm::vec3(distRotAxis(m_randomEngine),
                                       distRotAxis(m_randomEngine),
                                       distRotAxis(m_randomEngine)));
 }
 
+void OpenGLWindow::randomizePlanet(glm::vec3 &position, glm::vec3 &rotation) {
+  std::uniform_real_distribution<float> distPosXY(-10.0f, 10.0f);
+  std::uniform_real_distribution<float> distPosZ(-100.0f, 0.0f);
+  float X = distPosXY(m_randomEngine); 
+  float Y = distPosXY(m_randomEngine);
+  if(Y <= 0 && X <= 0){
+    if(abs(X)>=5 && abs(Y)>=5) position = glm::vec3(X-10.0f, Y-10.0f, distPosZ(m_randomEngine));
+    else if(abs(X) > abs(Y)) position = glm::vec3(X-10.0f, Y, distPosZ(m_randomEngine));
+    else if(abs(X) < abs(Y)) position = glm::vec3(X, Y-10.0f, distPosZ(m_randomEngine));
+  }
+  if(Y <= 0 && X > 0){
+    if(X>=5 && abs(Y)>=5) position = glm::vec3(X+10.0f, Y-10.0f, distPosZ(m_randomEngine));
+    else if(X>abs(Y)) position = glm::vec3(X+10.0f, Y, distPosZ(m_randomEngine));
+    else if(X<abs(Y)) position = glm::vec3(X, Y-10.0f, distPosZ(m_randomEngine));
+  }
+  if(Y > 0 && X < 0){
+    if(abs(X)>=5 && Y>=5) position = glm::vec3(X-10.0f, Y+10.0f, distPosZ(m_randomEngine));
+    else if(abs(X) > Y) position = glm::vec3(X-10.0f, Y, distPosZ(m_randomEngine));
+    else if(abs(X) < Y) position = glm::vec3(X, Y+10.0f, distPosZ(m_randomEngine));
+  }
+  if(Y > 0 && X > 0){
+    if(X>=5 && Y>=5) position = glm::vec3(X+10.0f, Y+10.0f, distPosZ(m_randomEngine));
+    else if(X>Y) position = glm::vec3(X+10.0f, Y, distPosZ(m_randomEngine));
+    else if(X<Y) position = glm::vec3(X, Y+10.0f, distPosZ(m_randomEngine));
+  }
+  std::uniform_real_distribution<float> distRotAxis(-0.0005f, 0.0005f);
+  rotation = glm::normalize(glm::vec3(distRotAxis(m_randomEngine), distRotAxis(m_randomEngine), 0.0f));
+}
+
 void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
   const float deltaTime{static_cast<float>(getDeltaTime())};
-
   if (handleEvent.type == SDL_KEYDOWN) {
     if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
       m_shipPosition.y += deltaTime * 10.0f;
     }
-    if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      m_shipPosition.y -= deltaTime * 10.0f;
-    }
     if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
       m_shipPosition.x -= deltaTime * 10.0f;
+    }
+    if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
+      m_shipPosition.y -= deltaTime * 10.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
       m_shipPosition.x += deltaTime * 10.0f;
     }
   }
-
 }
 
 void OpenGLWindow::paintGL() {
   update();
-
-  // Clear color buffer and depth buffer
   abcg::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
   abcg::glViewport(0, 0, m_viewportWidth, m_viewportHeight);
-
-
-  // Use currently selected program
   const auto program{m_programs.at(m_currentProgramIndex)};
   abcg::glUseProgram(program);
-
-  // Get location of uniform variables (could be precomputed)
   const GLint viewMatrixLoc{abcg::glGetUniformLocation(program, "viewMatrix")};
   const GLint projMatrixLoc{abcg::glGetUniformLocation(program, "projMatrix")};
   const GLint modelMatrixLoc{abcg::glGetUniformLocation(program, "modelMatrix")};
@@ -131,12 +136,10 @@ void OpenGLWindow::paintGL() {
   // Set uniform variables used by every scene object
   abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_viewMatrix[0][0]);
   abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);
-  abcg::glUniform4f(colorLoc, 1.0f, 1.0f, 1.0f, 1.0f);  // White
+  abcg::glUniform4f(colorLoc, 0.6f, 0.2f, 0.0f, 1.0f);  // White
 
   abcg::glUniform1i(diffuseTexLoc, 0);
   abcg::glUniform1i(mappingModeLoc, m_mappingMode);
-
-  //const auto lightDirRotated{m_lightDir};
   abcg::glUniform4fv(lightDirLoc, 1, &m_asteroid.m_lightDir.x);
   abcg::glUniform4fv(IaLoc, 1, &m_asteroid.m_Ia.x);
   abcg::glUniform4fv(IdLoc, 1, &m_asteroid.m_Id.x);
@@ -156,11 +159,9 @@ void OpenGLWindow::paintGL() {
 
     // Set uniform variable
     abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
-
     const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelMatrix)};
     glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
     abcg::glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
-
     abcg::glUniform1f(shininessLoc, m_asteroid.m_shininess);
     abcg::glUniform4fv(KaLoc, 1, &m_asteroid.m_Ka.x);
     abcg::glUniform4fv(KdLoc, 1, &m_asteroid.m_Kd.x);
@@ -170,29 +171,52 @@ void OpenGLWindow::paintGL() {
   }
 
   // Render ship
-  glm::mat4 modelMatrixShip{1.0f};
-  modelMatrixShip = glm::translate(modelMatrixShip, m_shipPosition);
-  modelMatrixShip = glm::scale(modelMatrixShip, glm::vec3(0.07f));
-
-  abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrixShip[0][0]);
-
-  const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelMatrixShip)};
+  glm::mat4 modelShipMatrix{1.0f};
+  modelShipMatrix = glm::translate(modelShipMatrix, m_shipPosition);
+  modelShipMatrix = glm::scale(modelShipMatrix, glm::vec3(0.07f));
+  //modelShipMatrix = glm::rotate(modelShipMatrix, 0.0f, m_shipRotation);
+  abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelShipMatrix[0][0]);
+  const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelShipMatrix)};
   glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
   abcg::glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
-
   abcg::glUniform1f(shininessLoc, m_ship.m_shininess);
   abcg::glUniform4fv(KaLoc, 1, &m_ship.m_Ka.x);
   abcg::glUniform4fv(KdLoc, 1, &m_ship.m_Kd.x);
   abcg::glUniform4fv(KsLoc, 1, &m_ship.m_Ks.x);
-
   m_ship.render();
+
+  //render planetas
+  for (const auto index : iter::range(m_numPlanets)) {
+    const auto &position{m_planetPositions.at(index)};
+    const auto &rotation{m_planetRotations.at(index)};
+    glm::mat4 modelMatrix{1.0f};
+    modelMatrix = glm::translate(modelMatrix, position);
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(2.0f));
+    modelMatrix = glm::rotate(modelMatrix, m_angle, rotation);
+    abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
+    if(index < 3){
+      abcg::glUniform4f(colorLoc, 0.93f, 0.82f, 0.0f, 1.0f);
+      m_planetRing.render();
+    }
+    if(index >= 3 && index < 6){
+      abcg::glUniform4f(colorLoc, 0.0f, 0.5f, 0.9f, 1.0f);
+      m_planetRound.render();
+    }
+    if(index >= 6 && index < 9){
+      abcg::glUniform4f(colorLoc, 0.0f, 0.5f, 0.5f, 1.0f);
+      m_planetRound.render();
+    }
+    if(index >= 9 && index < 12){
+      abcg::glUniform4f(colorLoc, 0.8f, 0.0f, 0.6f, 1.0f);
+      m_planetRing.render();
+    }
+  }
 
   abcg::glUseProgram(0);
 }
 
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
-
   {
     const auto widgetSize{ImVec2(222, 190)};
     ImGui::SetNextWindowPos(ImVec2(m_viewportWidth - widgetSize.x - 5, 5));
@@ -236,7 +260,6 @@ void OpenGLWindow::paintUI() {
     // Shader combo box
     {
       static std::size_t currentIndex{};
-
       ImGui::PushItemWidth(120);
       if (ImGui::BeginCombo("Shader", m_shaderNames.at(currentIndex))) {
         for (auto index : iter::range(m_shaderNames.size())) {
@@ -253,13 +276,14 @@ void OpenGLWindow::paintUI() {
       if (static_cast<int>(currentIndex) != m_currentProgramIndex) {
         m_currentProgramIndex = currentIndex;
         m_asteroid.setupVAO(m_programs.at(m_currentProgramIndex));
+        m_planetRing.setupVAO(m_programs.at(m_currentProgramIndex));
+        m_planetRound.setupVAO(m_programs.at(m_currentProgramIndex));
       }
     }
 
     if (!m_asteroid.isUVMapped()) {
       ImGui::TextColored(ImVec4(1, 1, 0, 1), "Mesh has no UV coords.");
     }
-
     // UV mapping box
     {
       std::vector<std::string> comboItems{"Triplanar", "Cylindrical",
@@ -312,6 +336,8 @@ void OpenGLWindow::resizeGL(int width, int height) {
 
 void OpenGLWindow::terminateGL() {
   m_asteroid.terminateGL();
+  m_planetRing.terminateGL();
+  m_planetRound.terminateGL();
   m_ship.terminateGL();
   for (const auto& program : m_programs) {
     abcg::glDeleteProgram(program);
@@ -319,54 +345,53 @@ void OpenGLWindow::terminateGL() {
 }
 
 void OpenGLWindow::update() {
-
+  float rndAst = sin(getElapsedTime())*3.0f;
   if(lost && m_restartWaitTimer.elapsed() > 5){
     restart();
     return;
   }
-
   // Animate angle by 90 degrees per second
   const float deltaTime{static_cast<float>(getDeltaTime())};
   m_angle = glm::wrapAngle(m_angle + glm::radians(90.0f) * deltaTime);
-
-  // Update stars
   for (const auto index : iter::range(m_numAsteroids)) {
     auto &position{m_asteroidPositions.at(index)};
     auto &rotation{m_asteroidRotations.at(index)};
-
-    // Z coordinate increases by 10 units per second
-    position.z += deltaTime * 13.0f;
-
+    position.z += deltaTime * 10.0f;
+    position.y += deltaTime* rndAst;
     if(!lost){
-      // If this star is behind the camera, select a new random position and
-      // orientation, and move it back to -100
       if (position.z > 0.1f) {
         randomizeAsteroid(position, rotation);
-        position.z = -100.0f;  // Back to -100
+        position.z = -100.0f;
       }
-
-      // Check Colisions
-      if (  (m_shipPosition.x <= position.x + 1.2f && m_shipPosition.x >= position.x - 1.2f)
+      if ((m_shipPosition.x <= position.x + 1.2f && m_shipPosition.x >= position.x - 1.2f)
             && (m_shipPosition.y <= position.y + 1.2f && m_shipPosition.y >= position.y - 1.2f) 
-            && (m_shipPosition.z <= position.z + 1.2f && m_shipPosition.z >= position.z - 1.2f)) 
-      {
+            && (m_shipPosition.z <= position.z + 1.2f && m_shipPosition.z >= position.z - 1.2f)){
         if(m_collisionTimer.elapsed() > 1){
           cont_collisions = cont_collisions - 1;
-
           if(cont_collisions == 0){
             lost = true;
             m_shipPosition.z = 20.0f; //???
             m_restartWaitTimer.restart();
           }
-
           m_collisionTimer.restart();
         }
       }
     }else{
       position.z = 20.0f;
     }
+  }
+  for (const auto index : iter::range(m_numPlanets)) {
+    auto &position{m_planetPositions.at(index)};
+    auto &rotation{m_planetRotations.at(index)};
+    position.z += deltaTime * 10.0f;
+    if (position.z > 0.1f) {
+      randomizePlanet(position, rotation);
+      position.z = -100.0f;
+    }
+    if(lost){
+      position.z = 20.0f;
+    }
   }    
-  
 }
 
 void OpenGLWindow::restart() {

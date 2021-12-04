@@ -16,7 +16,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   void terminateGL() override;
 
  private:
-  static const int m_numAsteroids{320};
+  static const int m_numAsteroids{150};
   static const int m_numPlanets{12};
 
   GLuint m_program{};
@@ -60,8 +60,8 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   std::vector<GLuint> m_programs;
   int m_currentProgramIndex{};
   int m_mappingMode{};
-  // Light and material properties
-  /*
+
+  //teste
   glm::vec4 m_lightDir{-1.0f, -1.0f, -1.0f, 0.0f};
   glm::vec4 m_Ia{1.0f};
   glm::vec4 m_Id{1.0f};
@@ -70,7 +70,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   glm::vec4 m_Kd;
   glm::vec4 m_Ks;
   float m_shininess{};
-  */
+
   void loadModel(std::string path_obj, std::string path_text, Model &model);
 };
 
