@@ -3,6 +3,9 @@ ABCg
 
 Development framework accompanying the course MCTA008-17 Computer Graphics at [UFABC](https://www.ufabc.edu.br/).
 
+
+WebAssembly:
+https://guiarqueiro.github.io/entrega3/public/index.html
 ----
 
 ### Credits
