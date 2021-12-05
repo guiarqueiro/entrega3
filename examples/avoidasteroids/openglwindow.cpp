@@ -36,6 +36,7 @@ void OpenGLWindow::initializeGL() {
 
   loadModel("ship.obj", "ship.jpg", m_ship);
 
+  
   cont_collisions = 5;
   m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
 }
@@ -133,11 +134,9 @@ void OpenGLWindow::paintGL() {
   const GLint diffuseTexLoc{abcg::glGetUniformLocation(program, "diffuseTex")};
   const GLint mappingModeLoc{abcg::glGetUniformLocation(program, "mappingMode")};
 
-  // Set uniform variables used by every scene object
   abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_viewMatrix[0][0]);
   abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);
-  abcg::glUniform4f(colorLoc, 0.6f, 0.2f, 0.0f, 1.0f);  // White
-
+  abcg::glUniform4f(colorLoc, 0.6f, 0.2f, 0.0f, 1.0f);
   abcg::glUniform1i(diffuseTexLoc, 0);
   abcg::glUniform1i(mappingModeLoc, m_mappingMode);
   abcg::glUniform4fv(lightDirLoc, 1, &m_asteroid.m_lightDir.x);
@@ -193,20 +192,27 @@ void OpenGLWindow::paintGL() {
     modelMatrix = glm::scale(modelMatrix, glm::vec3(2.0f));
     modelMatrix = glm::rotate(modelMatrix, m_angle, rotation);
     abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
+	  const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelMatrix)};
+    glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
+    abcg::glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+    abcg::glUniform1f(shininessLoc, m_planetRing.m_shininess);
+	  abcg::glUniform4fv(KaLoc, 1, &m_planetRing.m_Ka.x);
+    abcg::glUniform4fv(KdLoc, 1, &m_planetRing.m_Kd.x);
+    abcg::glUniform4fv(KsLoc, 1, &m_planetRing.m_Ks.x);
+	  abcg::glUniform1f(shininessLoc, m_planetRound.m_shininess);
+    abcg::glUniform4fv(KaLoc, 1, &m_planetRound.m_Ka.x);
+    abcg::glUniform4fv(KdLoc, 1, &m_planetRound.m_Kd.x);
+    abcg::glUniform4fv(KsLoc, 1, &m_planetRound.m_Ks.x);
     if(index < 3){
-      abcg::glUniform4f(colorLoc, 0.93f, 0.82f, 0.0f, 1.0f);
       m_planetRing.render();
     }
     if(index >= 3 && index < 6){
-      abcg::glUniform4f(colorLoc, 0.0f, 0.5f, 0.9f, 1.0f);
       m_planetRound.render();
     }
     if(index >= 6 && index < 9){
-      abcg::glUniform4f(colorLoc, 0.0f, 0.5f, 0.5f, 1.0f);
       m_planetRound.render();
     }
     if(index >= 9 && index < 12){
-      abcg::glUniform4f(colorLoc, 0.8f, 0.0f, 0.6f, 1.0f);
       m_planetRing.render();
     }
   }
@@ -321,7 +327,7 @@ void OpenGLWindow::paintUI() {
     //ImGui::PushFont(m_font);
     if(lost)
       {
-        ImGui::Text(" *Lose!* ");
+        ImGui::Text(" *GAME OVER!* ");
       }
     //ImGui::PopFont();
     ImGui::End();
@@ -395,6 +401,5 @@ void OpenGLWindow::update() {
 
 void OpenGLWindow::restart() {
     lost = false;
-    // terminateGL();
     initializeGL();
 }

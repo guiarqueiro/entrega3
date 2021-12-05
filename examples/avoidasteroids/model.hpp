@@ -37,14 +37,15 @@ class Model {
 
   [[nodiscard]] bool isUVMapped() const { return m_hasTexCoords; }
   
+  glm::vec4 m_Ka;
+  glm::vec4 m_Kd;
+  glm::vec4 m_Ks;
   float m_shininess{};
+  
   glm::vec4 m_lightDir{-1.0f, -1.0f, -1.0f, 0.0f};
   glm::vec4 m_Ia{1.0f};
   glm::vec4 m_Id{1.0f};
   glm::vec4 m_Is{1.0f};
-  glm::vec4 m_Ka;
-  glm::vec4 m_Kd;
-  glm::vec4 m_Ks;
   
 
  private:

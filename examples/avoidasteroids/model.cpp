@@ -72,8 +72,7 @@ void Model::loadObj(std::string_view path, bool standardize) {
   const auto basePath{std::filesystem::path{path}.parent_path().string() + "/"};
 
   tinyobj::ObjReaderConfig readerConfig;
-  readerConfig.mtl_search_path = basePath;  // Path to material files
-
+  readerConfig.mtl_search_path = basePath;
   tinyobj::ObjReader reader;
 
   if (!reader.ParseFromFile(path.data(), readerConfig)) {
