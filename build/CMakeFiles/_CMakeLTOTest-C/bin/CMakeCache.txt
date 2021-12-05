@@ -21,6 +21,9 @@ CMAKE_AR:FILEPATH=C:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripte
 // MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=
 
+//Path to the emulator for the target system.
+CMAKE_CROSSCOMPILING_EMULATOR:FILEPATH=C:/Users/Guilherme/Documents/CG_UFABC/emsdk/node/14.15.5_64bit/bin/node.exe
+
 //Emscripten em++
 CMAKE_CXX_COMPILER:FILEPATH=C:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/em++.bat
 
@@ -177,7 +180,7 @@ EMSCRIPTEN_FORCE_COMPILERS:BOOL=ON
 EMSCRIPTEN_GENERATE_BITCODE_STATIC_LIBRARIES:BOOL=OFF
 
 //Path to a program.
-NODE_JS_EXECUTABLE:FILEPATH=NODE_JS_EXECUTABLE-NOTFOUND
+NODE_JS_EXECUTABLE:FILEPATH=C:/Users/Guilherme/Documents/CG_UFABC/emsdk/node/14.15.5_64bit/bin/node.exe
 
 //Value Computed by CMake
 lto-test_BINARY_DIR:STATIC=C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/CMakeFiles/_CMakeLTOTest-C/bin
