@@ -1,6 +1,6 @@
 # Blender v2.67 (sub 1) OBJ File: 'AlienPlanet.blend'
 # www.blender.org
-mtllib AlienPlanet.mtl
+mtllib planetRound.mtl
 o Plane
 v -1.088258 3.496028 0.087011
 v -1.088258 3.496028 0.087011
@@ -2180,7 +2180,7 @@ vt 0.679652 0.000088
 vt 0.703085 0.000089
 vt 0.726518 0.000090
 vt 0.749951 0.000091
-usemtl Material.001
+usemtl planetRound
 s 1
 f 834/1 292/2 3/3 295/4
 f 835/5 298/6 6/7 303/8

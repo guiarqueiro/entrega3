@@ -38,7 +38,7 @@ void OpenGLWindow::initializeGL() {
 
   m_skybox.loadCubeTexture(getAssetsPath() + "maps/cube/");
   initializeSkybox();
-  hp_qtt = 5;
+  hp_qtt = 3;
   m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
 }
 
@@ -117,16 +117,16 @@ void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
   const float deltaTime{static_cast<float>(getDeltaTime())};
   if (handleEvent.type == SDL_KEYDOWN) {
     if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
-      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 1.0f;
+      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 5.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
-      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 1.0f;
+      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 5.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 1.0f;
+      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 5.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
-      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 1.0f;
+      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 5.0f;
     }
   }
 }
@@ -172,6 +172,7 @@ void OpenGLWindow::paintGL() {
 
   // Render each star
   for (const auto index : iter::range(m_numAsteroids)) {
+    abcg::glFrontFace(GL_CCW);
     const auto &position{m_asteroidPositions.at(index)};
     const auto &rotation{m_asteroidRotations.at(index)};
 
@@ -191,13 +192,13 @@ void OpenGLWindow::paintGL() {
     abcg::glUniform4fv(KaLoc, 1, &m_asteroid.m_Ka.x);
     abcg::glUniform4fv(KdLoc, 1, &m_asteroid.m_Kd.x);
     abcg::glUniform4fv(KsLoc, 1, &m_asteroid.m_Ks.x);
-
     m_asteroid.render();
     
   }
 
   // Render ship
   glm::mat4 modelShipMatrix{1.0f};
+  abcg::glFrontFace(GL_CCW);
   modelShipMatrix = glm::translate(modelShipMatrix, m_shipPosition);
   modelShipMatrix = glm::scale(modelShipMatrix, glm::vec3(0.07f));
   abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelShipMatrix[0][0]);
@@ -212,6 +213,7 @@ void OpenGLWindow::paintGL() {
 
   //render planetas
   for (const auto index : iter::range(m_numPlanets)) {
+    abcg::glFrontFace(GL_CCW);
     const auto &position{m_planetPositions.at(index)};
     const auto &rotation{m_planetRotations.at(index)};
     glm::mat4 modelMatrix{1.0f};
@@ -265,6 +267,7 @@ void OpenGLWindow::paintGL() {
   abcg::glDepthFunc(GL_LESS);	
   abcg::glBindVertexArray(0);	
   abcg::glUseProgram(0);
+  
 }
 
 
@@ -275,94 +278,28 @@ void OpenGLWindow::paintGL() {
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
   {
-    const auto widgetSize{ImVec2(222, 190)};
+    const auto widgetSize{ImVec2(222, 55)};
     ImGui::SetNextWindowPos(ImVec2(m_viewportWidth - widgetSize.x - 5, 5));
     ImGui::SetNextWindowSize(widgetSize);
-    const auto flags{ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDecoration};
-    ImGui::Begin("Widget window", nullptr, flags);
-
-    // Projection combo box
+    ImGui::Begin("Widget window", nullptr, ImGuiWindowFlags_NoDecoration);
     {
       ImGui::PushItemWidth(120);
       static std::size_t currentIndex{};
-      const std::vector<std::string> comboItems{"Perspective", "Orthographic"};
-
-      if (ImGui::BeginCombo("Projection",
-                            comboItems.at(currentIndex).c_str())) {
-        for (const auto index : iter::range(comboItems.size())) {
-          const bool isSelected{currentIndex == index};
-          if (ImGui::Selectable(comboItems.at(index).c_str(), isSelected))
-            currentIndex = index;
-          if (isSelected) ImGui::SetItemDefaultFocus();
-        }
-        ImGui::EndCombo();
-      }
       ImGui::PopItemWidth();
-
       ImGui::PushItemWidth(170);
       const auto aspect{static_cast<float>(m_viewportWidth) /
                         static_cast<float>(m_viewportHeight)};
       if (currentIndex == 0) {
         m_projMatrix =
             glm::perspective(glm::radians(m_FOV), aspect, 0.01f, 100.0f);
-
         ImGui::SliderFloat("FOV", &m_FOV, 5.0f, 179.0f, "%.0f degrees");
       } else {
         m_projMatrix = glm::ortho(-20.0f * aspect, 20.0f * aspect, -20.0f,
                                   20.0f, 0.01f, 100.0f);
       }
-      ImGui::PopItemWidth();
-    }
-
-    // Shader combo box
-    {
-      static std::size_t currentIndex{};
-      ImGui::PushItemWidth(120);
-      if (ImGui::BeginCombo("Shader", m_shaderNames.at(currentIndex))) {
-        for (auto index : iter::range(m_shaderNames.size())) {
-          const bool isSelected{currentIndex == index};
-          if (ImGui::Selectable(m_shaderNames.at(index), isSelected))
-            currentIndex = index;
-          if (isSelected) ImGui::SetItemDefaultFocus();
-        }
-        ImGui::EndCombo();
-      }
-      ImGui::PopItemWidth();
-
-      // Set up VAO if shader program has changed
-      if (static_cast<int>(currentIndex) != m_currentProgramIndex) {
-        m_currentProgramIndex = currentIndex;
-        m_asteroid.setupVAO(m_programs.at(m_currentProgramIndex));
-        m_planetRing.setupVAO(m_programs.at(m_currentProgramIndex));
-        m_planetRound.setupVAO(m_programs.at(m_currentProgramIndex));
-      }
-    }
-
-    if (!m_asteroid.isUVMapped()) {
-      ImGui::TextColored(ImVec4(1, 1, 0, 1), "Mesh has no UV coords.");
-    }
-    // UV mapping box
-    {
-      std::vector<std::string> comboItems{"Triplanar", "Cylindrical",
-                                          "Spherical"};
-
-      if (m_asteroid.isUVMapped()) comboItems.emplace_back("From mesh");
-
-      ImGui::PushItemWidth(120);
-      if (ImGui::BeginCombo("UV mapping",
-                            comboItems.at(m_mappingMode).c_str())) {
-        for (auto index : iter::range(comboItems.size())) {
-          const bool isSelected{m_mappingMode == static_cast<int>(index)};
-          if (ImGui::Selectable(comboItems.at(index).c_str(), isSelected))
-            m_mappingMode = index;
-          if (isSelected) ImGui::SetItemDefaultFocus();
-        }
-        ImGui::EndCombo();
-      }
       ImGui::Text("VIDAS: %d", hp_qtt);
       ImGui::PopItemWidth();
     }
-
     ImGui::End();
   }
 

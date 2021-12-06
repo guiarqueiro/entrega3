@@ -54,8 +54,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   void update();
   void restart();
   glm::vec3 m_shipPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-  std::vector<const char*> m_shaderNames{"texture", "blinnphong", "phong", "cubereflect",
-                                         "cuberefract", "gouraud", "normal", "depth"};
+  std::vector<const char*> m_shaderNames{"texture"};
   int m_currentProgramIndex{};
   int m_mappingMode{};
  

@@ -4,7 +4,7 @@
 mtllib asteroid.mtl
 
 #
-# object 10464_Asteroid_v1
+# object asteroid
 #
 
 v  -290.4599 -310.2993 242.3887
@@ -21011,8 +21011,8 @@ vt 0.6760 0.2948 0.0000
 vt 0.6771 0.2802 0.0000
 # 7170 texture coords
 
-g 10464_Asteroid_v1
-usemtl _10464_Asteroid_v1_max201010464_Asteroid_v1
+g asteroid
+usemtl asteroid
 s 2
 f 1/1/1 2/2/2 3/3/3 4/4/4 
 f 2/2/2 5/5/5 6/6/6 3/3/3 

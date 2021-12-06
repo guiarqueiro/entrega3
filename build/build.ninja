@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: abcg
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Debug
+CONFIGURATION = Release
 # =============================================================================
 # Include auxiliary files.
 
@@ -102,59 +102,59 @@ build abcg/edit_cache: phony abcg/CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_abcg: phony || cmake_object_order_depends_target_fmt cmake_object_order_depends_target_imgui
 
-build abcg/CMakeFiles/abcg.dir/abcg_application.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_application.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_application.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_application.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_application.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_application.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_elapsedtimer.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_elapsedtimer.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_elapsedtimer.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_elapsedtimer.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_exception.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_exception.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_exception.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_exception.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_exception.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_exception.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_image.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_image.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_image.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_image.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_image.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_image.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_openglfunctions.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_openglfunctions.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_openglfunctions.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_openglfunctions.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_openglwindow.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_openglwindow.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_openglwindow.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_openglwindow.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_openglwindow.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_openglwindow.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_string.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_string.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_string.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_string.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_string.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_string.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
-build abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.obj: CXX_COMPILER__abcg_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_trackball.cpp || cmake_object_order_depends_target_abcg
-  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_trackball.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.o: CXX_COMPILER__abcg_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/abcg_trackball.cpp || cmake_object_order_depends_target_abcg
+  DEP_FILE = abcg\CMakeFiles\abcg.dir\abcg_trackball.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -sSDL2_IMAGE_FORMATS="[""jpg"",""png""]" -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   OBJECT_FILE_DIR = abcg\CMakeFiles\abcg.dir
 
@@ -166,8 +166,8 @@ build abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.obj: CXX_COMPILER__abcg_Debug 
 #############################################
 # Link the static library abcg\libabcg.a
 
-build abcg/libabcg.a: CXX_STATIC_LIBRARY_LINKER__abcg_Debug abcg/CMakeFiles/abcg.dir/abcg_application.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_exception.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_image.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_openglwindow.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_string.cpp.obj abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.obj || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a
-  LANGUAGE_COMPILE_FLAGS = -g -flto -fno-fat-lto-objects
+build abcg/libabcg.a: CXX_STATIC_LIBRARY_LINKER__abcg_Release abcg/CMakeFiles/abcg.dir/abcg_application.cpp.o abcg/CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.o abcg/CMakeFiles/abcg.dir/abcg_exception.cpp.o abcg/CMakeFiles/abcg.dir/abcg_image.cpp.o abcg/CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.o abcg/CMakeFiles/abcg.dir/abcg_openglwindow.cpp.o abcg/CMakeFiles/abcg.dir/abcg_string.cpp.o abcg/CMakeFiles/abcg.dir/abcg_trackball.cpp.o || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG -flto=thin
   OBJECT_DIR = abcg\CMakeFiles\abcg.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -241,52 +241,52 @@ build abcg/external/imgui/edit_cache: phony abcg/external/imgui/CMakeFiles/edit_
 
 build cmake_object_order_depends_target_imgui: phony || abcg/external/imgui/CMakeFiles/imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_demo.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_demo.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_demo.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_demo.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_draw.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_draw.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_draw.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_draw.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_tables.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_tables.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_tables.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_tables.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_widgets.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_widgets.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_impl_sdl.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_impl_sdl.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_impl_sdl.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_impl_sdl.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
-build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__imgui_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_imgui
-  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_impl_opengl3.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
+build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.o: CXX_COMPILER__imgui_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_imgui
+  DEP_FILE = abcg\external\imgui\CMakeFiles\imgui.dir\imgui_impl_opengl3.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -s USE_SDL=2
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -I/usr/local/include -I/opt/local/include -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   OBJECT_FILE_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
 
@@ -298,8 +298,8 @@ build abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.obj: CXX_C
 #############################################
 # Link the static library abcg\external\imgui\libimgui.a
 
-build abcg/external/imgui/libimgui.a: CXX_STATIC_LIBRARY_LINKER__imgui_Debug abcg/external/imgui/CMakeFiles/imgui.dir/imgui.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.obj abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = -g -flto -fno-fat-lto-objects
+build abcg/external/imgui/libimgui.a: CXX_STATIC_LIBRARY_LINKER__imgui_Release abcg/external/imgui/CMakeFiles/imgui.dir/imgui.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.o abcg/external/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG -flto=thin
   OBJECT_DIR = abcg\external\imgui\CMakeFiles\imgui.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -373,9 +373,9 @@ build abcg/external/fmt/edit_cache: phony abcg/external/fmt/CMakeFiles/edit_cach
 
 build cmake_object_order_depends_target_fmt: phony || abcg/external/fmt/CMakeFiles/fmt.dir
 
-build abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.obj: CXX_COMPILER__fmt_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt/format.cc || cmake_object_order_depends_target_fmt
-  DEP_FILE = abcg\external\fmt\CMakeFiles\fmt.dir\format.cc.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -std=gnu++20
+build abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.o: CXX_COMPILER__fmt_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt/format.cc || cmake_object_order_depends_target_fmt
+  DEP_FILE = abcg\external\fmt\CMakeFiles\fmt.dir\format.cc.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -std=gnu++20
   INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt
   OBJECT_DIR = abcg\external\fmt\CMakeFiles\fmt.dir
   OBJECT_FILE_DIR = abcg\external\fmt\CMakeFiles\fmt.dir
@@ -388,8 +388,8 @@ build abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.obj: CXX_COMPILER__fmt_Debu
 #############################################
 # Link the static library abcg\external\fmt\libfmt.a
 
-build abcg/external/fmt/libfmt.a: CXX_STATIC_LIBRARY_LINKER__fmt_Debug abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.obj
-  LANGUAGE_COMPILE_FLAGS = -g -flto -fno-fat-lto-objects
+build abcg/external/fmt/libfmt.a: CXX_STATIC_LIBRARY_LINKER__fmt_Release abcg/external/fmt/CMakeFiles/fmt.dir/format.cc.o
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG -flto=thin
   OBJECT_DIR = abcg\external\fmt\CMakeFiles\fmt.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -521,24 +521,24 @@ build examples/avoidasteroids/rebuild_cache: phony examples/avoidasteroids/CMake
 
 build cmake_object_order_depends_target_avoidasteroids: phony || cmake_object_order_depends_target_abcg cmake_object_order_depends_target_fmt cmake_object_order_depends_target_imgui
 
-build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/main.cpp.obj: CXX_COMPILER__avoidasteroids_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/main.cpp || cmake_object_order_depends_target_avoidasteroids
-  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\main.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/main.cpp.o: CXX_COMPILER__avoidasteroids_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/main.cpp || cmake_object_order_depends_target_avoidasteroids
+  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\main.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -Wall -Wextra -pedantic -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
   OBJECT_FILE_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
 
-build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/model.cpp.obj: CXX_COMPILER__avoidasteroids_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/model.cpp || cmake_object_order_depends_target_avoidasteroids
-  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\model.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/model.cpp.o: CXX_COMPILER__avoidasteroids_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/model.cpp || cmake_object_order_depends_target_avoidasteroids
+  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\model.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -Wall -Wextra -pedantic -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
   OBJECT_FILE_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
 
-build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.obj: CXX_COMPILER__avoidasteroids_Debug C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/openglwindow.cpp || cmake_object_order_depends_target_avoidasteroids
-  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\openglwindow.cpp.obj.d
-  FLAGS = -g -flto -fno-fat-lto-objects -Wall -Wextra -pedantic -std=gnu++20
-  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
+build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.o: CXX_COMPILER__avoidasteroids_Release C$:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/openglwindow.cpp || cmake_object_order_depends_target_avoidasteroids
+  DEP_FILE = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir\openglwindow.cpp.o.d
+  FLAGS = -O3 -DNDEBUG -flto=thin -Wall -Wextra -pedantic -std=c++20 -Oz -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -std=gnu++20
+  INCLUDES = -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/cppitertools -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/fmt -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/glm/.. -IC:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cache/sysroot/include/SDL2 -IC:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external/imgui -isystem C:/Users/Guilherme/Documents/CG_UFABC/entrega3/abcg/external
   OBJECT_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
   OBJECT_FILE_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
 
@@ -548,26 +548,26 @@ build examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.obj
 
 
 #############################################
-# Link the executable bin\avoidasteroids.exe
+# Link the executable ..\public\avoidasteroids.js
 
-build bin/avoidasteroids.exe: CXX_EXECUTABLE_LINKER__avoidasteroids_Debug examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/main.cpp.obj examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/model.cpp.obj examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.obj | abcg/libabcg.a C$:/msys64/mingw64/lib/libglew32.dll.a abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a C$:/msys64/mingw64/lib/libSDL2main.a C$:/msys64/mingw64/lib/libSDL2.dll.a C$:/msys64/mingw64/lib/libSDL2_image.dll.a || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a abcg/libabcg.a
-  FLAGS = -g -flto -fno-fat-lto-objects
-  LINK_LIBRARIES = abcg/libabcg.a  -lmingw32  -lSDL2main  -lSDL2  -lglew32  -lopengl32  C:/msys64/mingw64/lib/libglew32.dll.a  -lopengl32  -lglu32  abcg/external/fmt/libfmt.a  abcg/external/imgui/libimgui.a  -lmingw32  -mwindows  C:/msys64/mingw64/lib/libSDL2main.a  C:/msys64/mingw64/lib/libSDL2.dll.a  C:/msys64/mingw64/lib/libSDL2_image.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build ../public/avoidasteroids.js: CXX_EXECUTABLE_LINKER__avoidasteroids_Release examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/main.cpp.o examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/model.cpp.o examples/avoidasteroids/CMakeFiles/avoidasteroids.dir/openglwindow.cpp.o | abcg/libabcg.a abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a || abcg/external/fmt/libfmt.a abcg/external/imgui/libimgui.a abcg/libabcg.a
+  FLAGS = -O3 -DNDEBUG -flto=thin
+  LINK_FLAGS = -sASSERTIONS=0 -sDISABLE_EXCEPTION_CATCHING=1 -sALLOW_MEMORY_GROWTH=1 -sEXIT_RUNTIME=1 -sFULL_ES3=1 -sMAX_WEBGL_VERSION=2 -sMIN_WEBGL_VERSION=2 -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -sWASM=1 --use-preload-plugins --preload-file C:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/assets@/assets
+  LINK_LIBRARIES = abcg/libabcg.a  abcg/external/fmt/libfmt.a  abcg/external/imgui/libimgui.a
   OBJECT_DIR = examples\avoidasteroids\CMakeFiles\avoidasteroids.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\Users\Guilherme\Documents\CG_UFABC\entrega3\build\examples\avoidasteroids && C:\msys64\mingw64\bin\cmake.exe -E make_directory C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.dir && C:\msys64\mingw64\bin\cmake.exe -E copy C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.exe C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.dir/avoidasteroids.exe && C:\msys64\mingw64\bin\cmake.exe -E remove C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.exe && cd /D C:\Users\Guilherme\Documents\CG_UFABC\entrega3\build\examples\avoidasteroids && C:\msys64\mingw64\bin\cmake.exe -E copy_directory C:/Users/Guilherme/Documents/CG_UFABC/entrega3/examples/avoidasteroids/assets C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.dir/assets && cd /D C:\Users\Guilherme\Documents\CG_UFABC\entrega3\build\examples\avoidasteroids && C:\msys64\mingw64\bin\cmake.exe -E rename C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids.dir C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids"
-  PRE_LINK = cmd.exe /C "cd /D C:\Users\Guilherme\Documents\CG_UFABC\entrega3\build\examples\avoidasteroids && C:\msys64\mingw64\bin\cmake.exe -E remove_directory C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/bin/avoidasteroids && cd C:\Users\Guilherme\Documents\CG_UFABC\entrega3\build"
-  TARGET_FILE = bin\avoidasteroids.exe
-  TARGET_IMPLIB = examples\avoidasteroids\libavoidasteroids.dll.a
-  TARGET_PDB = avoidasteroids.exe.dbg
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = ..\public\avoidasteroids.js
+  TARGET_PDB = avoidasteroids.js.dbg
 
 # =============================================================================
 # Target aliases.
 
 build abcg: phony abcg/libabcg.a
 
-build avoidasteroids: phony bin/avoidasteroids.exe
+build avoidasteroids: phony ../public/avoidasteroids.js
 
-build avoidasteroids.exe: phony bin/avoidasteroids.exe
+build avoidasteroids.js: phony ../public/avoidasteroids.js
 
 build fmt: phony abcg/external/fmt/libfmt.a
 
@@ -650,7 +650,7 @@ build examples/all: phony examples/avoidasteroids/all
 #############################################
 # Folder: C:/Users/Guilherme/Documents/CG_UFABC/entrega3/build/examples/avoidasteroids
 
-build examples/avoidasteroids/all: phony bin/avoidasteroids.exe
+build examples/avoidasteroids/all: phony ../public/avoidasteroids.js
 
 # =============================================================================
 # Built-in targets
@@ -659,14 +659,14 @@ build examples/avoidasteroids/all: phony bin/avoidasteroids.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../abcg/CMakeLists.txt ../abcg/external/CMakeLists.txt ../abcg/external/cppitertools/CMakeLists.txt ../abcg/external/fmt/CMakeLists.txt ../abcg/external/glm/CMakeLists.txt ../abcg/external/gsl/CMakeLists.txt ../abcg/external/imgui/CMakeLists.txt ../cmake/ABCg.cmake ../cmake/Common.cmake ../cmake/FindSDL2.cmake ../cmake/FindSDL2_image.cmake ../cmake/Sanitizers.cmake ../cmake/StaticAnalyzers.cmake ../cmake/Warnings.cmake ../examples/CMakeLists.txt ../examples/avoidasteroids/CMakeLists.txt C$:/msys64/mingw64/lib/cmake/glew/CopyImportedTargetProperties.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-config.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-targets-release.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-targets.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-C.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-CXX.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindGLEW.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindThreads.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.4/CMakeCCompiler.cmake CMakeFiles/3.21.4/CMakeCXXCompiler.cmake CMakeFiles/3.21.4/CMakeRCCompiler.cmake CMakeFiles/3.21.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../abcg/CMakeLists.txt ../abcg/external/CMakeLists.txt ../abcg/external/cppitertools/CMakeLists.txt ../abcg/external/fmt/CMakeLists.txt ../abcg/external/glm/CMakeLists.txt ../abcg/external/gsl/CMakeLists.txt ../abcg/external/imgui/CMakeLists.txt ../cmake/ABCg.cmake ../cmake/Common.cmake ../examples/CMakeLists.txt ../examples/avoidasteroids/CMakeLists.txt C$:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-C.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-CXX.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU.cmake CMakeCache.txt CMakeFiles/3.21.4/CMakeCCompiler.cmake CMakeFiles/3.21.4/CMakeCXXCompiler.cmake CMakeFiles/3.21.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../abcg/CMakeLists.txt ../abcg/external/CMakeLists.txt ../abcg/external/cppitertools/CMakeLists.txt ../abcg/external/fmt/CMakeLists.txt ../abcg/external/glm/CMakeLists.txt ../abcg/external/gsl/CMakeLists.txt ../abcg/external/imgui/CMakeLists.txt ../cmake/ABCg.cmake ../cmake/Common.cmake ../cmake/FindSDL2.cmake ../cmake/FindSDL2_image.cmake ../cmake/Sanitizers.cmake ../cmake/StaticAnalyzers.cmake ../cmake/Warnings.cmake ../examples/CMakeLists.txt ../examples/avoidasteroids/CMakeLists.txt C$:/msys64/mingw64/lib/cmake/glew/CopyImportedTargetProperties.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-config.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-targets-release.cmake C$:/msys64/mingw64/lib/cmake/glew/glew-targets.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeRCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-C.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-CXX.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIncludeFile.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckLibraryExists.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindGLEW.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindOpenGL.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindPackageMessage.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/FindThreads.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-GNU.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows-windres.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/Windows.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.21.4/CMakeCCompiler.cmake CMakeFiles/3.21.4/CMakeCXXCompiler.cmake CMakeFiles/3.21.4/CMakeRCCompiler.cmake CMakeFiles/3.21.4/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../abcg/CMakeLists.txt ../abcg/external/CMakeLists.txt ../abcg/external/cppitertools/CMakeLists.txt ../abcg/external/fmt/CMakeLists.txt ../abcg/external/glm/CMakeLists.txt ../abcg/external/gsl/CMakeLists.txt ../abcg/external/imgui/CMakeLists.txt ../cmake/ABCg.cmake ../cmake/Common.cmake ../examples/CMakeLists.txt ../examples/avoidasteroids/CMakeLists.txt C$:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cmake/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/Guilherme/Documents/CG_UFABC/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCXXInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeGenericSystem.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-C.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/CMakeLists-CXX.txt.in C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/foo.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.c C$:/msys64/mingw64/share/cmake-3.21/Modules/CheckIPOSupported/main.cpp C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang-C.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang-CXX.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/Clang.cmake C$:/msys64/mingw64/share/cmake-3.21/Modules/Compiler/GNU.cmake CMakeCache.txt CMakeFiles/3.21.4/CMakeCCompiler.cmake CMakeFiles/3.21.4/CMakeCXXCompiler.cmake CMakeFiles/3.21.4/CMakeSystem.cmake: phony
 
 
 #############################################
