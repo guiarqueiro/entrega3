@@ -36,14 +36,34 @@ void OpenGLWindow::initializeGL() {
 
   loadModel("ship.obj", "ship.jpg", m_ship);
 
-  
+  m_skybox.loadCubeTexture(getAssetsPath() + "maps/cube/");
+  initializeSkybox();
   hp_qtt = 5;
   m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
+}
+
+void OpenGLWindow::initializeSkybox() {	
+  const auto path{getAssetsPath() + "shaders/" + m_skyShaderName};	
+  m_skyProgram = createProgramFromFile(path + ".vert", path + ".frag");	
+  abcg::glGenBuffers(1, &m_skyVBO);	
+  abcg::glBindBuffer(GL_ARRAY_BUFFER, m_skyVBO);	
+  abcg::glBufferData(GL_ARRAY_BUFFER, sizeof(m_skyPositions),	
+                     m_skyPositions.data(), GL_STATIC_DRAW);	
+  abcg::glBindBuffer(GL_ARRAY_BUFFER, 0);	
+  const GLint positionAttribute{abcg::glGetAttribLocation(m_skyProgram, "inPosition")};	
+  abcg::glGenVertexArrays(1, &m_skyVAO);	
+  abcg::glBindVertexArray(m_skyVAO);	
+  abcg::glBindBuffer(GL_ARRAY_BUFFER, m_skyVBO);	
+  abcg::glEnableVertexAttribArray(positionAttribute);	
+  abcg::glVertexAttribPointer(positionAttribute, 3, GL_FLOAT, GL_FALSE, 0, nullptr);	
+  abcg::glBindBuffer(GL_ARRAY_BUFFER, 0);	
+  abcg::glBindVertexArray(0);	
 }
 
 void OpenGLWindow::loadModel(std::string path_obj, std::string path_text, Model &model) {
   model.terminateGL();
   model.loadDiffuseTexture(getAssetsPath() + "maps/" + path_text);
+  model.loadNormalTexture(getAssetsPath() + "maps/pattern_normal.png");
   model.loadObj(getAssetsPath() + path_obj);
   model.setupVAO(m_programs.at(m_currentProgramIndex));
   // Use material properties from the loaded model
@@ -121,7 +141,6 @@ void OpenGLWindow::paintGL() {
   const GLint projMatrixLoc{abcg::glGetUniformLocation(program, "projMatrix")};
   const GLint modelMatrixLoc{abcg::glGetUniformLocation(program, "modelMatrix")};
   const GLint colorLoc{abcg::glGetUniformLocation(program, "color")};
-
   const GLint normalMatrixLoc{abcg::glGetUniformLocation(program, "normalMatrix")};
   const GLint lightDirLoc{abcg::glGetUniformLocation(program, "lightDirWorldSpace")};
   const GLint shininessLoc{abcg::glGetUniformLocation(program, "shininess")};
@@ -133,12 +152,19 @@ void OpenGLWindow::paintGL() {
   const GLint KsLoc{abcg::glGetUniformLocation(program, "Ks")};
   const GLint diffuseTexLoc{abcg::glGetUniformLocation(program, "diffuseTex")};
   const GLint mappingModeLoc{abcg::glGetUniformLocation(program, "mappingMode")};
+  const GLint normalTexLoc{abcg::glGetUniformLocation(program, "normalTex")};	
+  const GLint cubeTexLoc{abcg::glGetUniformLocation(program, "cubeTex")};
+  const GLint texMatrixLoc{abcg::glGetUniformLocation(program, "texMatrix")};
 
   abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_viewMatrix[0][0]);
   abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);
   abcg::glUniform4f(colorLoc, 0.6f, 0.2f, 0.0f, 1.0f);
   abcg::glUniform1i(diffuseTexLoc, 0);
+  abcg::glUniform1i(normalTexLoc, 1);	
+  abcg::glUniform1i(cubeTexLoc, 2);
   abcg::glUniform1i(mappingModeLoc, m_mappingMode);
+  const glm::mat3 texMatrix{glm::rotate(glm::mat4(1.0f), m_angle, glm::vec3{1.0f})};
+  abcg::glUniformMatrix3fv(texMatrixLoc, 1, GL_TRUE, &texMatrix[0][0]);
   abcg::glUniform4fv(lightDirLoc, 1, &m_asteroid.m_lightDir.x);
   abcg::glUniform4fv(IaLoc, 1, &m_asteroid.m_Ia.x);
   abcg::glUniform4fv(IdLoc, 1, &m_asteroid.m_Id.x);
@@ -167,6 +193,7 @@ void OpenGLWindow::paintGL() {
     abcg::glUniform4fv(KsLoc, 1, &m_asteroid.m_Ks.x);
 
     m_asteroid.render();
+    
   }
 
   // Render ship
@@ -216,9 +243,30 @@ void OpenGLWindow::paintGL() {
       m_planetRing.render();
     }
   }
-
   abcg::glUseProgram(0);
+ /* if (m_currentProgramIndex == 0 || m_currentProgramIndex == 1){
+  abcg::glUseProgram(program);	
+  const GLint viewMatrixLoc{abcg::glGetUniformLocation(program, "viewMatrix")};	
+  const GLint projMatrixLoc{abcg::glGetUniformLocation(program, "projMatrix")};	
+  const GLint skyTexLoc{abcg::glGetUniformLocation(m_skyProgram, "skyTex")};	
+  const auto viewMatrix{glm::rotate(glm::mat4(1.0f), m_angle, glm::vec3{1.0f})};	
+  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &viewMatrix[0][0]);	
+  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);	
+  abcg::glUniform1i(skyTexLoc, 0);	
+  abcg::glBindVertexArray(m_skyVAO);	
+  abcg::glActiveTexture(GL_TEXTURE0);	
+  abcg::glBindTexture(GL_TEXTURE_CUBE_MAP, m_skybox.getCubeTexture());	
+  abcg::glEnable(GL_CULL_FACE);	
+  abcg::glFrontFace(GL_CW);
+  abcg::glDepthFunc(GL_LEQUAL);	
+  abcg::glDrawArrays(GL_TRIANGLES, 0, m_skyPositions.size());	
+  abcg::glDepthFunc(GL_LESS);	
+  //abcg::glBindVertexArray(0);	
+  //abcg::glUseProgram(0);
+  }*/
 }
+
+
 
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
@@ -344,9 +392,17 @@ void OpenGLWindow::terminateGL() {
   m_planetRing.terminateGL();
   m_planetRound.terminateGL();
   m_ship.terminateGL();
+  m_skybox.terminateGL();
   for (const auto& program : m_programs) {
     abcg::glDeleteProgram(program);
   }
+  terminateSkybox();
+}
+
+void OpenGLWindow::terminateSkybox() {	
+  abcg::glDeleteProgram(m_skyProgram);	
+  abcg::glDeleteBuffers(1, &m_skyVBO);	
+  abcg::glDeleteVertexArrays(1, &m_skyVAO);	
 }
 
 void OpenGLWindow::update() {
@@ -375,7 +431,7 @@ void OpenGLWindow::update() {
           hp_qtt = hp_qtt - 1;
           if(hp_qtt == 0){
             lost = true;
-            m_shipPosition.z = 20.0f; //???
+            m_shipPosition.z = 20.0f;
             m_restartWaitTimer.restart();
           }
           m_hitTimer.restart();
