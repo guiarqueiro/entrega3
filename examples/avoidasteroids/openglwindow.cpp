@@ -9,13 +9,12 @@
 void OpenGLWindow::initializeGL() {
   abcg::glClearColor(0, 0, 0, 1);
   abcg::glEnable(GL_DEPTH_TEST);
-  // Create programs
   for (const auto& name : m_shaderNames) {
     const auto path{getAssetsPath() + "shaders/" + name};
     const auto program{createProgramFromFile(path + ".vert", path + ".frag")};
     m_programs.push_back(program);
   }
-  m_mappingMode = 3;  // "From mesh" option
+  m_mappingMode = 3;
   m_viewMatrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
   //asteroides
   loadModel("asteroid.obj", "asteroid.jpg", m_asteroid);
@@ -66,7 +65,6 @@ void OpenGLWindow::loadModel(std::string path_obj, std::string path_text, Model 
   model.loadNormalTexture(getAssetsPath() + "maps/pattern_normal.png");
   model.loadObj(getAssetsPath() + path_obj);
   model.setupVAO(m_programs.at(m_currentProgramIndex));
-  // Use material properties from the loaded model
   model.m_Ka = model.getKa();
   model.m_Kd = model.getKd();
   model.m_Ks = model.getKs();
@@ -117,16 +115,16 @@ void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
   const float deltaTime{static_cast<float>(getDeltaTime())};
   if (handleEvent.type == SDL_KEYDOWN) {
     if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
-      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 5.0f;
+      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 2.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
-      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 5.0f;
+      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 2.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 5.0f;
+      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 2.0f;
     }
     if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
-      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 5.0f;
+      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 2.0f;
     }
   }
 }
@@ -175,15 +173,10 @@ void OpenGLWindow::paintGL() {
     abcg::glFrontFace(GL_CCW);
     const auto &position{m_asteroidPositions.at(index)};
     const auto &rotation{m_asteroidRotations.at(index)};
-
-    // Compute model matrix of the current star
     glm::mat4 modelMatrix{1.0f};
     modelMatrix = glm::translate(modelMatrix, position);
     modelMatrix = glm::scale(modelMatrix, glm::vec3(1.2f));
     modelMatrix = glm::rotate(modelMatrix, m_angle, rotation);
-
-
-    // Set uniform variable
     abcg::glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
     const auto modelViewMatrix{glm::mat3(m_viewMatrix * modelMatrix)};
     glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
@@ -195,7 +188,7 @@ void OpenGLWindow::paintGL() {
     m_asteroid.render();
     
   }
-
+  
   // Render ship
   glm::mat4 modelShipMatrix{1.0f};
   abcg::glFrontFace(GL_CCW);
@@ -245,8 +238,6 @@ void OpenGLWindow::paintGL() {
       m_planetRing.render();
     }
   }
-
-  //renderSkybox();
   abcg::glUseProgram(0);
 
   abcg::glUseProgram(m_skyProgram);
@@ -270,15 +261,10 @@ void OpenGLWindow::paintGL() {
   
 }
 
-
-/*void renderSkybox(){
-  
-}*/
-
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
   {
-    const auto widgetSize{ImVec2(222, 55)};
+    const auto widgetSize{ImVec2(222, 85)};
     ImGui::SetNextWindowPos(ImVec2(m_viewportWidth - widgetSize.x - 5, 5));
     ImGui::SetNextWindowSize(widgetSize);
     ImGui::Begin("Widget window", nullptr, ImGuiWindowFlags_NoDecoration);
@@ -297,7 +283,8 @@ void OpenGLWindow::paintUI() {
         m_projMatrix = glm::ortho(-20.0f * aspect, 20.0f * aspect, -20.0f,
                                   20.0f, 0.01f, 100.0f);
       }
-      ImGui::Text("VIDAS: %d", hp_qtt);
+      ImGui::Text("HEALTH POINTS: %d", hp_qtt);
+      ImGui::Text("SCORE: %d", score);
       ImGui::PopItemWidth();
     }
     ImGui::End();
@@ -313,12 +300,10 @@ void OpenGLWindow::paintUI() {
                            ImGuiWindowFlags_NoTitleBar |
                            ImGuiWindowFlags_NoInputs};
     ImGui::Begin(" ", nullptr, flags);
-    //ImGui::PushFont(m_font);
     if(lost)
       {
         ImGui::Text(" *GAME OVER!* ");
       }
-    //ImGui::PopFont();
     ImGui::End();
   }
 }
@@ -348,11 +333,12 @@ void OpenGLWindow::terminateSkybox() {
 
 void OpenGLWindow::update() {
   float rndAst = sin(getElapsedTime())*3.0f;
-  if(lost && m_restartWaitTimer.elapsed() > 5){
+  score++;
+
+  if(lost && m_restartWaitTimer.elapsed() > 4){
     restart();
     return;
   }
-  // Animate angle by 90 degrees per second
   const float deltaTime{static_cast<float>(getDeltaTime())};
   m_angle = glm::wrapAngle(m_angle + glm::radians(90.0f) * deltaTime);
   for (const auto index : iter::range(m_numAsteroids)) {
@@ -391,6 +377,7 @@ void OpenGLWindow::update() {
       position.z = -100.0f;
     }
     if(lost){
+      score = 0;
       position.z = 20.0f;
     }
   }    

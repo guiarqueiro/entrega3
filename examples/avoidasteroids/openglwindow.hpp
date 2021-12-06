@@ -16,8 +16,8 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   void terminateGL() override;
 
  private:
-  static const int m_numAsteroids{150};
-  static const int m_numPlanets{12};
+  static const int m_numAsteroids{180};
+  static const int m_numPlanets{24};
 
   std::vector<GLuint> m_programs;
 
@@ -38,6 +38,8 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   std::array<glm::vec3, m_numPlanets> m_planetRotations;
   
   float m_angle{};
+  int score = 0;
+  int finalScore;
 
   glm::mat4 m_viewMatrix{1.0f};
   glm::mat4 m_projMatrix{1.0f};
