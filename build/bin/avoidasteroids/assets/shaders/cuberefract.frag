@@ -11,7 +11,7 @@ out vec4 outColor;
 void main() {
   vec3 V = normalize(-fragP);
   vec3 N = normalize(fragN);
-  vec3 T = refract(-V, N, 1.0 / 1.52);  // Air to glass
+  vec3 T = refract(-V, N, 1.0 / 1.52);
 
   outColor = texture(cubeTex, texMatrix * T);
 }

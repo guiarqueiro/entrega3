@@ -50,12 +50,12 @@ void OpenGLWindow::initializeSkybox() {
   abcg::glBufferData(GL_ARRAY_BUFFER, sizeof(m_skyPositions),	
                      m_skyPositions.data(), GL_STATIC_DRAW);	
   abcg::glBindBuffer(GL_ARRAY_BUFFER, 0);	
-  const GLint positionAttribute{abcg::glGetAttribLocation(m_skyProgram, "inPosition")};	
+  const GLint positionAttributeSky{abcg::glGetAttribLocation(m_skyProgram, "inPosition")};	
   abcg::glGenVertexArrays(1, &m_skyVAO);	
   abcg::glBindVertexArray(m_skyVAO);	
   abcg::glBindBuffer(GL_ARRAY_BUFFER, m_skyVBO);	
-  abcg::glEnableVertexAttribArray(positionAttribute);	
-  abcg::glVertexAttribPointer(positionAttribute, 3, GL_FLOAT, GL_FALSE, 0, nullptr);	
+  abcg::glEnableVertexAttribArray(positionAttributeSky);	
+  abcg::glVertexAttribPointer(positionAttributeSky, 3, GL_FLOAT, GL_FALSE, 0, nullptr);	
   abcg::glBindBuffer(GL_ARRAY_BUFFER, 0);	
   abcg::glBindVertexArray(0);	
 }
@@ -163,7 +163,7 @@ void OpenGLWindow::paintGL() {
   abcg::glUniform1i(normalTexLoc, 1);	
   abcg::glUniform1i(cubeTexLoc, 2);
   abcg::glUniform1i(mappingModeLoc, m_mappingMode);
-  const glm::mat3 texMatrix{glm::rotate(glm::mat4(1.0f), m_angle, glm::vec3{1.0f})};
+  const glm::mat3 texMatrix{glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3{1.0f})};
   abcg::glUniformMatrix3fv(texMatrixLoc, 1, GL_TRUE, &texMatrix[0][0]);
   abcg::glUniform4fv(lightDirLoc, 1, &m_asteroid.m_lightDir.x);
   abcg::glUniform4fv(IaLoc, 1, &m_asteroid.m_Ia.x);
@@ -243,30 +243,34 @@ void OpenGLWindow::paintGL() {
       m_planetRing.render();
     }
   }
+
+  //renderSkybox();
   abcg::glUseProgram(0);
- /* if (m_currentProgramIndex == 0 || m_currentProgramIndex == 1){
-  abcg::glUseProgram(program);	
-  const GLint viewMatrixLoc{abcg::glGetUniformLocation(program, "viewMatrix")};	
-  const GLint projMatrixLoc{abcg::glGetUniformLocation(program, "projMatrix")};	
+
+  abcg::glUseProgram(m_skyProgram);
+  const GLint viewMatrixLocSky{abcg::glGetUniformLocation(m_skyProgram, "viewMatrix")};	
+  const GLint projMatrixLocSky{abcg::glGetUniformLocation(m_skyProgram, "projMatrix")};	
   const GLint skyTexLoc{abcg::glGetUniformLocation(m_skyProgram, "skyTex")};	
-  const auto viewMatrix{glm::rotate(glm::mat4(1.0f), m_angle, glm::vec3{1.0f})};	
-  abcg::glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &viewMatrix[0][0]);	
-  abcg::glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);	
+  const auto viewMatrixSky{glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3{1.0f})};	
+  abcg::glUniformMatrix4fv(viewMatrixLocSky, 1, GL_FALSE, &viewMatrixSky[0][0]);	
+  abcg::glUniformMatrix4fv(projMatrixLocSky, 1, GL_FALSE, &m_projMatrix[0][0]);	
   abcg::glUniform1i(skyTexLoc, 0);	
   abcg::glBindVertexArray(m_skyVAO);	
   abcg::glActiveTexture(GL_TEXTURE0);	
   abcg::glBindTexture(GL_TEXTURE_CUBE_MAP, m_skybox.getCubeTexture());	
   abcg::glEnable(GL_CULL_FACE);	
-  abcg::glFrontFace(GL_CW);
+  abcg::glFrontFace(GL_CW);	
   abcg::glDepthFunc(GL_LEQUAL);	
   abcg::glDrawArrays(GL_TRIANGLES, 0, m_skyPositions.size());	
   abcg::glDepthFunc(GL_LESS);	
-  //abcg::glBindVertexArray(0);	
-  //abcg::glUseProgram(0);
-  }*/
+  abcg::glBindVertexArray(0);	
+  abcg::glUseProgram(0);
 }
 
 
+/*void renderSkybox(){
+  
+}*/
 
 void OpenGLWindow::paintUI() {
   abcg::OpenGLWindow::paintUI();
