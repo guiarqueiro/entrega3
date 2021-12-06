@@ -30,6 +30,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   Model m_ship;
   Model m_planetRing;
   Model m_planetRound;
+  Model m_skybox;
 
   std::array<glm::vec3, m_numAsteroids> m_asteroidPositions;
   std::array<glm::vec3, m_numAsteroids> m_asteroidRotations;
@@ -42,23 +43,44 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   glm::mat4 m_projMatrix{1.0f};
   float m_FOV{140.0f};
 
-  int cont_collisions{2};
+  int hp_qtt{2};
+  abcg::ElapsedTimer m_hitTimer;
   bool lost{false};
-  abcg::ElapsedTimer m_collisionTimer;
   abcg::ElapsedTimer m_restartWaitTimer;
 
   void randomizeAsteroid(glm::vec3 &position, glm::vec3 &rotation);
   void randomizePlanet(glm::vec3 &position, glm::vec3 &rotation);
 
   void update();
-
   void restart();
   glm::vec3 m_shipPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-  std::vector<const char*> m_shaderNames{"texture", "blinnphong", "phong",
-                                         "gouraud", "normal", "depth"};
+  std::vector<const char*> m_shaderNames{"texture", "blinnphong", "phong", "cubereflect",
+                                         "cuberefract", "gouraud", "normal", "depth"};
   int m_currentProgramIndex{};
   int m_mappingMode{};
-
+ 
+  // Skybox
+  const std::string m_skyShaderName{"skybox"};
+  GLuint m_skyVAO{};
+  GLuint m_skyVBO{};
+  GLuint m_skyProgram{};
+  const std::array<glm::vec3, 36>  m_skyPositions{
+    glm::vec3{-1, -1, +1}, glm::vec3{+1, -1, +1}, glm::vec3{+1, +1, +1},
+    glm::vec3{-1, -1, +1}, glm::vec3{+1, +1, +1}, glm::vec3{-1, +1, +1},
+    glm::vec3{+1, -1, -1}, glm::vec3{-1, -1, -1}, glm::vec3{-1, +1, -1},
+    glm::vec3{+1, -1, -1}, glm::vec3{-1, +1, -1}, glm::vec3{+1, +1, -1},
+    glm::vec3{+1, -1, -1}, glm::vec3{+1, +1, -1}, glm::vec3{+1, +1, +1},
+    glm::vec3{+1, -1, -1}, glm::vec3{+1, +1, +1}, glm::vec3{+1, -1, +1},
+    glm::vec3{-1, -1, +1}, glm::vec3{-1, +1, +1}, glm::vec3{-1, +1, -1},
+    glm::vec3{-1, -1, +1}, glm::vec3{-1, +1, -1}, glm::vec3{-1, -1, -1},
+    glm::vec3{-1, +1, +1}, glm::vec3{+1, +1, +1}, glm::vec3{+1, +1, -1},
+    glm::vec3{-1, +1, +1}, glm::vec3{+1, +1, -1}, glm::vec3{-1, +1, -1},
+    glm::vec3{-1, -1, -1}, glm::vec3{+1, -1, -1}, glm::vec3{+1, -1, +1},
+    glm::vec3{-1, -1, -1}, glm::vec3{+1, -1, +1}, glm::vec3{-1, -1, +1}
+  };
+  void initializeSkybox();
+  void renderSkybox();
+  void terminateSkybox();
   void loadModel(std::string path_obj, std::string path_text, Model &model);
 };
 

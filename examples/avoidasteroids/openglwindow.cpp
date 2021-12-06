@@ -37,7 +37,7 @@ void OpenGLWindow::initializeGL() {
   loadModel("ship.obj", "ship.jpg", m_ship);
 
   
-  cont_collisions = 5;
+  hp_qtt = 5;
   m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
 }
 
@@ -307,7 +307,7 @@ void OpenGLWindow::paintUI() {
         }
         ImGui::EndCombo();
       }
-      ImGui::Text("VIDAS: %d", cont_collisions);
+      ImGui::Text("VIDAS: %d", hp_qtt);
       ImGui::PopItemWidth();
     }
 
@@ -371,14 +371,14 @@ void OpenGLWindow::update() {
       if ((m_shipPosition.x <= position.x + 1.2f && m_shipPosition.x >= position.x - 1.2f)
             && (m_shipPosition.y <= position.y + 1.2f && m_shipPosition.y >= position.y - 1.2f) 
             && (m_shipPosition.z <= position.z + 1.2f && m_shipPosition.z >= position.z - 1.2f)){
-        if(m_collisionTimer.elapsed() > 1){
-          cont_collisions = cont_collisions - 1;
-          if(cont_collisions == 0){
+        if(m_hitTimer.elapsed() > 1){
+          hp_qtt = hp_qtt - 1;
+          if(hp_qtt == 0){
             lost = true;
             m_shipPosition.z = 20.0f; //???
             m_restartWaitTimer.restart();
           }
-          m_collisionTimer.restart();
+          m_hitTimer.restart();
         }
       }
     }else{
