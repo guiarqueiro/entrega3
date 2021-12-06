@@ -8,7 +8,7 @@ Com a inspiração dos clássicos protetores de telas do Windows, o Avoid Astero
 
 O código foi desenvolvido como um aprimoramento da entrega da atividade 2, utilizando a biblioteca ABCg, com OpenGL, com elementos da tela principal e controle de FOV em ImGUI, conforme vimos nos exemplos apresentados nas aulas.
 
-Criamos/editamos as texturas utilizadas no GIMP, retirando algumas imagens bda web como base. Além disso, os .obj e .mtl foram aprimorados e ajustados utilizando o Blender. Também utilizamos o Blender para verificar o mapa UV dos objetos para que pudéssemos ajustar as texturas.
+Criamos/editamos as texturas utilizadas no GIMP, retirando algumas imagens da web como base. Além disso, os .obj e .mtl foram ajustados utilizando o Blender. Também utilizamos o Blender para verificar o mapa UV dos objetos para que pudéssemos ajustar as texturas.
 
 O plano de fundo foi feito implementando um cubemap com tema espacial.
 
