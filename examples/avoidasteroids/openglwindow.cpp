@@ -329,14 +329,22 @@ void OpenGLWindow::terminateSkybox() {
 }
 
 void OpenGLWindow::update() {
-  float rndAst = sin(getElapsedTime())*3.0f;
   score++;
-
-  if(lost && m_restartWaitTimer.elapsed() > 4) restart();
-
+  float rndAst = sin(getElapsedTime())*3.0f;
   const float deltaTime{static_cast<float>(getDeltaTime())};
   m_angle = glm::wrapAngle(m_angle + glm::radians(90.0f) * deltaTime);
-  for (const auto index : iter::range(m_numAsteroids)) {
+  for (const auto index : iter::range(m_numPlanets)) {
+    auto &position{m_planetPositions.at(index)};
+    auto &rotation{m_planetRotations.at(index)};
+    position.z += deltaTime * 10.0f;
+    if (position.z > 0.1f) {
+      randomizePlanet(position, rotation);
+      position.z = -100.0f;
+    }
+    if(lost) position.z = 20.0f;
+  } 
+
+   for (const auto index : iter::range(m_numAsteroids)) {
     auto &position{m_asteroidPositions.at(index)};
     auto &rotation{m_asteroidRotations.at(index)};
     position.z += deltaTime * 10.0f;
@@ -347,31 +355,23 @@ void OpenGLWindow::update() {
         position.z = -100.0f;
       }
       if ((m_shipPosition.x <= position.x + 1.0f && m_shipPosition.x >= position.x - 1.0f) && (m_shipPosition.y <= position.y + 1.0f && m_shipPosition.y >= position.y - 1.0f) && (m_shipPosition.z <= position.z + 1.0f && m_shipPosition.z >= position.z - 1.0f)){
-        if(m_hitTimer.elapsed() > 1){
+        if(m_hitTimer.elapsed() >= 1){
           hp_qtt--;
           if(hp_qtt == 0){
-            lost = true;
-            m_shipPosition.z = 20.0f;
             m_restartWaitTimer.restart();
+            m_shipPosition.z = 20.0f;
+            lost = true;            
           }
           m_hitTimer.restart();
         }
       }
-    } else position.z = 20.0f;
-  }
-  for (const auto index : iter::range(m_numPlanets)) {
-    auto &position{m_planetPositions.at(index)};
-    auto &rotation{m_planetRotations.at(index)};
-    position.z += deltaTime * 10.0f;
-    if (position.z > 0.1f) {
-      randomizePlanet(position, rotation);
-      position.z = -100.0f;
-    }
-    if(lost){
+    } else {
       score = 0;
       position.z = 20.0f;
     }
-  }    
+  }
+
+  if(lost && m_restartWaitTimer.elapsed() > 4) restart();   
 }
 
 void OpenGLWindow::restart() {
