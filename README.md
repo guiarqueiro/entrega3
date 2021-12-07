@@ -12,10 +12,9 @@ Criamos/editamos as texturas utilizadas no GIMP, retirando algumas imagens da we
 
 O plano de fundo foi feito implementando um cubemap com tema espacial.
 
+Utilizamos como inspiração a aplicação "Efeito Starfield" disponibilizado pelo professor Harlen em: https://hbatagelo.github.io/cg/starfield.html, desta vez com cógido para interpretar input de usuário na movimentação de uma nave.
 
-Utilizamos como inspiração a aplicação "Efeito Starfield" disponibilizado pelo professor Harlen em: https://hbatagelo.github.io/cg/starfield.html
-
-Para esta terceira entrega da disciplina, também utilizamos como base para implementar mapeamento, iluminação e texturas a aplicação "viewer6": https://hbatagelo.github.io/abcgapps/src/viewer6.zip
+Para esta terceira entrega da disciplina, também utilizamos como base para implementar mapeamento, iluminação e texturas a aplicação "viewer6": https://hbatagelo.github.io/abcgapps/src/viewer6.zip. Sistema de colisão inspirado no exemplo "Asteroids" visto no início do curso.
 
 ----
 URL: https://guiarqueiro.github.io/entrega3/public/index.html
