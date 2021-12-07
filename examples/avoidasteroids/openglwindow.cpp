@@ -6,6 +6,24 @@
 #include <glm/gtx/fast_trigonometry.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 
+void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
+  const float deltaTime{static_cast<float>(getDeltaTime())};
+  if (handleEvent.type == SDL_KEYDOWN) {
+    if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
+      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 2.0f;
+    }
+    if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
+      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 2.0f;
+    }
+    if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
+      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 2.0f;
+    }
+    if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
+      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 2.0f;
+    }
+  }
+}
+
 void OpenGLWindow::initializeGL() {
   abcg::glClearColor(0, 0, 0, 1);
   abcg::glEnable(GL_DEPTH_TEST);
@@ -16,7 +34,12 @@ void OpenGLWindow::initializeGL() {
   }
   m_mappingMode = 3;
   m_viewMatrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-  //asteroides
+  
+  //sky
+  m_skybox.loadCubeTexture(getAssetsPath() + "maps/cube/");
+  initializeSkybox();
+  
+  //asteroids
   loadModel("asteroid.obj", "asteroid.jpg", m_asteroid);
   for (const auto index : iter::range(m_numAsteroids)) {
     auto &position{m_asteroidPositions.at(index)};
@@ -24,7 +47,7 @@ void OpenGLWindow::initializeGL() {
     randomizeAsteroid(position, rotation);
   }
 
-  //planetas
+  //planets
   loadModel("planetRound.obj", "planetRound.jpg", m_planetRound);
   loadModel("planetRing.obj", "planetRing.jpg", m_planetRing);
   for (const auto index : iter::range(m_numPlanets)) {
@@ -32,13 +55,11 @@ void OpenGLWindow::initializeGL() {
     auto &rotation{m_planetRotations.at(index)};
     randomizePlanet(position, rotation);
   }
-
+  
+  //ship
   loadModel("ship.obj", "ship.jpg", m_ship);
-
-  m_skybox.loadCubeTexture(getAssetsPath() + "maps/cube/");
-  initializeSkybox();
-  hp_qtt = 3;
   m_shipPosition = glm::vec3(0.0f, -0.05f, -0.085f);
+  hp_qtt = 3;
 }
 
 void OpenGLWindow::initializeSkybox() {	
@@ -111,24 +132,6 @@ void OpenGLWindow::randomizePlanet(glm::vec3 &position, glm::vec3 &rotation) {
   rotation = glm::normalize(glm::vec3(distRotAxis(m_randomEngine), distRotAxis(m_randomEngine), 0.0f));
 }
 
-void OpenGLWindow::handleEvent(SDL_Event& handleEvent) {
-  const float deltaTime{static_cast<float>(getDeltaTime())};
-  if (handleEvent.type == SDL_KEYDOWN) {
-    if (handleEvent.key.keysym.sym == SDLK_UP || handleEvent.key.keysym.sym == SDLK_w){
-      if(m_shipPosition.y <= 0.2f) m_shipPosition.y += deltaTime * 2.0f;
-    }
-    if (handleEvent.key.keysym.sym == SDLK_LEFT || handleEvent.key.keysym.sym == SDLK_a){
-      if(m_shipPosition.x >= -0.2f) m_shipPosition.x -= deltaTime * 2.0f;
-    }
-    if (handleEvent.key.keysym.sym == SDLK_DOWN || handleEvent.key.keysym.sym == SDLK_s){
-      if(m_shipPosition.y >= -0.2f) m_shipPosition.y -= deltaTime * 2.0f;
-    }
-    if (handleEvent.key.keysym.sym == SDLK_RIGHT || handleEvent.key.keysym.sym == SDLK_d){
-      if(m_shipPosition.x <= 0.2f) m_shipPosition.x += deltaTime * 2.0f;
-    }
-  }
-}
-
 void OpenGLWindow::paintGL() {
   update();
   abcg::glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -168,7 +171,6 @@ void OpenGLWindow::paintGL() {
   abcg::glUniform4fv(IdLoc, 1, &m_asteroid.m_Id.x);
   abcg::glUniform4fv(IsLoc, 1, &m_asteroid.m_Is.x);
 
-  // Render each star
   for (const auto index : iter::range(m_numAsteroids)) {
     abcg::glFrontFace(GL_CCW);
     const auto &position{m_asteroidPositions.at(index)};
@@ -189,7 +191,6 @@ void OpenGLWindow::paintGL() {
     
   }
   
-  // Render ship
   glm::mat4 modelShipMatrix{1.0f};
   abcg::glFrontFace(GL_CCW);
   modelShipMatrix = glm::translate(modelShipMatrix, m_shipPosition);
@@ -204,7 +205,6 @@ void OpenGLWindow::paintGL() {
   abcg::glUniform4fv(KsLoc, 1, &m_ship.m_Ks.x);
   m_ship.render();
 
-  //render planetas
   for (const auto index : iter::range(m_numPlanets)) {
     abcg::glFrontFace(GL_CCW);
     const auto &position{m_planetPositions.at(index)};
@@ -300,10 +300,7 @@ void OpenGLWindow::paintUI() {
                            ImGuiWindowFlags_NoTitleBar |
                            ImGuiWindowFlags_NoInputs};
     ImGui::Begin(" ", nullptr, flags);
-    if(lost)
-      {
-        ImGui::Text(" *GAME OVER!* ");
-      }
+    if(lost) ImGui::Text(" *GAME OVER!* ");
     ImGui::End();
   }
 }
@@ -335,10 +332,8 @@ void OpenGLWindow::update() {
   float rndAst = sin(getElapsedTime())*3.0f;
   score++;
 
-  if(lost && m_restartWaitTimer.elapsed() > 4){
-    restart();
-    return;
-  }
+  if(lost && m_restartWaitTimer.elapsed() > 4) restart();
+
   const float deltaTime{static_cast<float>(getDeltaTime())};
   m_angle = glm::wrapAngle(m_angle + glm::radians(90.0f) * deltaTime);
   for (const auto index : iter::range(m_numAsteroids)) {
@@ -351,11 +346,9 @@ void OpenGLWindow::update() {
         randomizeAsteroid(position, rotation);
         position.z = -100.0f;
       }
-      if ((m_shipPosition.x <= position.x + 1.2f && m_shipPosition.x >= position.x - 1.2f)
-            && (m_shipPosition.y <= position.y + 1.2f && m_shipPosition.y >= position.y - 1.2f) 
-            && (m_shipPosition.z <= position.z + 1.2f && m_shipPosition.z >= position.z - 1.2f)){
+      if ((m_shipPosition.x <= position.x + 1.0f && m_shipPosition.x >= position.x - 1.0f) && (m_shipPosition.y <= position.y + 1.0f && m_shipPosition.y >= position.y - 1.0f) && (m_shipPosition.z <= position.z + 1.0f && m_shipPosition.z >= position.z - 1.0f)){
         if(m_hitTimer.elapsed() > 1){
-          hp_qtt = hp_qtt - 1;
+          hp_qtt--;
           if(hp_qtt == 0){
             lost = true;
             m_shipPosition.z = 20.0f;
@@ -364,9 +357,7 @@ void OpenGLWindow::update() {
           m_hitTimer.restart();
         }
       }
-    }else{
-      position.z = 20.0f;
-    }
+    } else position.z = 20.0f;
   }
   for (const auto index : iter::range(m_numPlanets)) {
     auto &position{m_planetPositions.at(index)};
