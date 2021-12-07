@@ -1,6 +1,6 @@
 Entrega 3 - Avoid Asteroids
 ====== 
-Com a inspiração dos clássicos protetores de telas do Windows, o Avoid Asteroids é uma aplicação interativa 3D onde uma nave viaja entre asteróides e planetas. Seu objetivo é desviar dos asteroides para que a nave não seja destruída!
+Com a inspiração dos clássicos protetores de telas do Windows, o Avoid Asteroids é uma aplicação interativa 3D onde uma nave viaja entre asteroides e planetas. Seu objetivo é desviar dos asteroides para que a nave não seja destruída!
 
 
 ![Imagem da aplicação](https://github.com/guiarqueiro/entrega3/blob/main/screenshot.png)
